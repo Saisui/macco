@@ -2,7 +2,7 @@
 
 ## 单行
 
-```
+```md
 /directive.fix1.fix2 arg1 arg2 key=val
 
 /exec rest...
