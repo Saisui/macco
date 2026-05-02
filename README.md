@@ -58,7 +58,7 @@ class MyMacco > Macco
     r.on 'exec', :rest, :body, desc: '运行命令' do |code, blockcode|
       code ||= blockcode
       res = execute code
-      if r.fix 'get'
+      if r.fix? 'get'
         bot.chat_send res
       end
     end
