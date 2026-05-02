@@ -33,9 +33,7 @@ np.array([1,2,3,4,5])
 
 ```
 
-那么，你接下来要干什么呢？
-
-/select
+/select 那么，你接下来要干什么呢？
 - 吃饭
 - 睡觉
 - 晚安
@@ -49,3 +47,38 @@ np.array([1,2,3,4,5])
 ```
 
 ``````
+
+
+# 定义
+
+```ruby
+class MyMacco > Macco
+  enter do |r|
+
+    r.on 'exec', :rest, :body, desc: '运行命令' do |code, blockcode|
+      code ||= blockcode
+      execute code
+    end
+
+    r.on 'create', :list, :body, desc: '创建文件'do |filepath, content|
+      File.write filepath, content
+    end
+
+    r.on 'select', :list, desc: '建议' do |advice, selections|
+      puts advice
+      selections.each { puts it }
+    end
+    
+  end
+end
+
+MyMacco.parse <<-MARKDOWN
+/select which do you want?
+1. play game
+2. wash body
+3. do exercise
+4. running
+5. eat breakfast
+6. other
+MARKDOWN
+```
