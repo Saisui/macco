@@ -71,8 +71,12 @@ class MyMacco > Macco
     
   end
 end
+```
 
-MyMacco.parse <<~MARKDOWN
+测试
+
+```ruby
+markdown = <<~MARKDOWN
   /select which do you want?
   1. play game
   2. wash body
@@ -81,4 +85,6 @@ MyMacco.parse <<~MARKDOWN
   5. eat breakfast
   6. other
 MARKDOWN
+
+MyMacco.run markdown
 ```
