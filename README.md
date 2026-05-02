@@ -57,7 +57,10 @@ class MyMacco > Macco
 
     r.on 'exec', :rest, :body, desc: '运行命令' do |code, blockcode|
       code ||= blockcode
-      execute code
+      res = execute code
+      if r.fix 'get'
+        bot.chat_send res
+      end
     end
 
     r.on 'create', :list, :body, desc: '创建文件'do |filepath, content|
@@ -67,6 +70,7 @@ class MyMacco > Macco
     r.on 'select', :list, desc: '建议' do |advice, selections|
       puts advice
       selections.each { puts it }
+      puts "selected: #{selections[STDIN.getch.to_i-1]}"
     end
     
   end
